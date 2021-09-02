@@ -1,7 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
+import initOpenCascade from "opencascade.js";
+
 
 function App() {
+  initOpenCascade().then(oc => {
+    // Check out the examples on how to use this library!
+    console.log("oc", oc);
+  });
   return (
     <div className="App">
       <header className="App-header">
