@@ -1,10 +1,15 @@
-module.exports = function override(config, env) {
-    const wasmExtensionRegExp = /\.wasm$/;
-    config.module.rules.push({
-        test: wasmExtensionRegExp,
-        type: "javascript/auto",
-        loader: "file-loader",
-    });
-
-    return config;
-};
+module.exports = {
+    webpack: (config) => {
+      config.module.rules.find(k => k.oneOf !== undefined).oneOf.unshift(
+        {
+          test: /\.wasm$/,
+          type: "javascript/auto",
+          loader: "file-loader",
+          options: {
+            name: "static/js/[name].[contenthash:8].[ext]",
+          },
+        }
+      );
+      return config;
+    },
+  };

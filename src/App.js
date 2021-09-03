@@ -1,13 +1,18 @@
+import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import initOpenCascade from "opencascade.js";
 
-
 function App() {
-  initOpenCascade().then(oc => {
-    // Check out the examples on how to use this library!
-    console.log("oc", oc);
-  });
+  
+  React.useEffect(() => {
+    console.log("LOADED APP")
+    initOpenCascade().then(oc => {
+      // Check out the examples on how to use this library!
+      console.log("openCascade is loaded:", oc);
+    });
+  }, [])
+
   return (
     <div className="App">
       <header className="App-header">
